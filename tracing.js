@@ -1,7 +1,7 @@
 const { Resource } = require("@opentelemetry/resources");
 const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
 const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-base');
-const { JaegerExporter } = require("@opentelemetry/exporter-jaeger"); //source help: https://snyk.io/advisor/npm-package/@opentelemetry/exporter-jaeger/example
+const { JaegerExporter } = require("@opentelemetry/exporter-jaeger");
 const { SimpleSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
 const { trace } = require("@opentelemetry/api");
@@ -12,7 +12,7 @@ const { HttpInstrumentation } = require("@opentelemetry/instrumentation-http");
 const { registerInstrumentations } = require("@opentelemetry/instrumentation");
 //Exporter
 module.exports = (serviceName) => {
-   //const exporter = new ConsoleSpanExporter();
+   //source help: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-jaeger 
     const exporter = new JaegerExporter({
         serviceName: serviceName,
         endpoint: 'http://localhost:14268/api/traces',
